@@ -28,4 +28,56 @@ select * from student
 -- Normalization
 --organized data to avoid duplicates
 
+--Inner Joins
+create table customers(
+    id int primary key,
+    name varchar(30),
+)
+insert into customers values(1,'ram');
+insert into customers values(2,'sham');
+
+select * from customers
+
+create table orders(
+id int primary key,
+customer_id int,
+product varchar(50),
+
+CONSTRAINT fk_customer
+foreign key (customer_id)
+references customers(id)
+);
+
+INSERT INTO orders VALUES (1, 1, 'Phone');
+INSERT INTO orders VALUES (2, 1, 'Laptop');
+--Inner join
+select c.name,o.product
+from customers c
+inner join orders o
+ON c.id = o.customer_id;
+
+--left join
+select c.name,o.product
+from customers c
+left join orders o
+on c.id = o.customer_id
+
+--outer join
+select c.name,o.product
+from customers c
+right join orders o
+on c.id = o.customer_id
+
+--Full outer join
+select c.name,o.product
+from customers c
+full outer join orders o
+on c.id = o.customer_id;
+
+--cross join
+--it is used for testing only
+select c.name,o.product
+from customers c
+cross join orders o
+
 
