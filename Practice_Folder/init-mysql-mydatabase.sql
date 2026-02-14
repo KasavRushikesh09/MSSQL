@@ -71,3 +71,50 @@ select * from customers where score > 500;
 
 select * from customers where score != 0;
 
+select * from customers order by country ASC, score desc;
+
+select 
+     country,
+     first_name,
+     SUM(score) as total_score
+from customers 
+group by country ,first_name;  
+
+select
+     country,
+     SUM(score) as total_score,
+     count(id) as total_customers
+from customers
+group by country
+
+select * from customers
+select 
+     country,
+     SUM(score) as total_score,
+     count(id) as total_customers
+from customers
+group by country
+having SUm(score)> 800
+
+select
+     country,
+     SUM(score) as total_sum,
+     count(id) as total_customers
+from customers
+where score> 400
+group by country
+having Sum(score)>800
+
+select
+      country,
+      avg(score) as avg_score
+from customers
+where score!=0
+group by country
+having avg(score) > 430
+
+select * from customers;
+
+select distinct
+country
+from customers
